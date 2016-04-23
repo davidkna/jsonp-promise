@@ -8,7 +8,7 @@
     "build": "babel src -d dist",
     "lint": "eslint --max-warnings 1 src/index.js",
     "prepublish": "npm run build",
-    "test": "npm run lint"
+    "test": "npm run lint && npm run build"
   },
   "repository": {
     "type": "git",
