@@ -30,7 +30,8 @@ function cleanup(callbackName) {
 export default function jsonp(_url, _queryParams = {}) {
   const queryParams = _queryParams
   if (!queryParams.callback) {
-    queryParams.callback = `_jsonp_${counter++}`
+    counter += 1
+    queryParams.callback = `_jsonp_${counter}`
   }
 
   const callbackName = queryParams.callback
