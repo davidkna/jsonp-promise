@@ -37,7 +37,8 @@ function jsonp(_url) {
 
   var queryParams = _queryParams;
   if (!queryParams.callback) {
-    queryParams.callback = '_jsonp_' + counter++;
+    counter += 1;
+    queryParams.callback = '_jsonp_' + counter;
   }
 
   var callbackName = queryParams.callback;
