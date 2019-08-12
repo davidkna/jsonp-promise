@@ -15,7 +15,7 @@
 function toQueryString(obj) {
   return Object
     .keys(obj)
-    .map(key => `${key}=${encodeURIComponent(obj[key])}`)
+    .map((key) => `${key}=${encodeURIComponent(obj[key])}`)
     .join('&')
 }
 

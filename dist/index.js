@@ -1,9 +1,10 @@
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = jsonp;
+exports["default"] = jsonp;
+
 // Copyright 2016 David Knaack
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,10 +18,9 @@ exports.default = jsonp;
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
-
 function toQueryString(obj) {
   return Object.keys(obj).map(function (key) {
-    return key + '=' + encodeURIComponent(obj[key]);
+    return "".concat(key, "=").concat(encodeURIComponent(obj[key]));
   }).join('&');
 }
 
@@ -33,17 +33,18 @@ function cleanup(callbackName) {
 }
 
 function jsonp(_url) {
-  var _queryParams = arguments.length <= 1 || arguments[1] === undefined ? {} : arguments[1];
+  var _queryParams = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
 
   var queryParams = _queryParams;
+
   if (!queryParams.callback) {
-    queryParams.callback = '_jsonp_' + counter++;
+    counter += 1;
+    queryParams.callback = "_jsonp_".concat(counter);
   }
 
   var callbackName = queryParams.callback;
-
   return new Promise(function (resolve, reject) {
-    var url = _url + '?' + toQueryString(queryParams);
+    var url = "".concat(_url, "?").concat(toQueryString(queryParams));
     var script = document.createElement('script');
     script.id = callbackName;
     script.src = url;
